@@ -1,0 +1,6 @@
+<header class="header">
+    <h1>todos</h1>
+    <form [formGroup]="textForm">
+        <input class="new-todo" placeholder="What needs to be done?" formControlName="txtInput" (keyup.enter)="add()" autofocus>
+    </form>
+</header>
