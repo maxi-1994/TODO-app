@@ -14,6 +14,27 @@ export const todoReducer = createReducer(
     todoState,
     on(actions.create, (state, props) => [...state, new Todo(props.text)]),
 
+    on(actions.editTodo, (state, props) => {
+        return state.map( todo => {
+            if(todo.id === props.id) {
+                return {
+                    ...todo,
+                    text: props.text
+                }
+            } else {
+                return todo;
+            }
+        });
+    }),
+
+    on(actions.deleteTodo, (state, props) => {
+        return state.filter(todo => todo.id !== props.id); // excluyo al TODO que tenga el misma id que el state. el metodo filter devuelve un nuevo array.
+    }),
+
+    on(actions.clearAllTodos, (state) => {
+        return state.filter(todo => !todo.completed);
+    }),
+
     on(actions.toggle, (state, props) => {
         return state.map( todo => {
             if(todo.id === props.id) {
@@ -34,22 +55,5 @@ export const todoReducer = createReducer(
                 completed: props.completed
             }
         });
-    }),
-
-    on(actions.editTodo, (state, props) => {
-        return state.map( todo => {
-            if(todo.id === props.id) {
-                return {
-                    ...todo,
-                    text: props.text
-                }
-            } else {
-                return todo;
-            }
-        });
-    }),
-
-    on(actions.deleteTodo, (state, props) => {
-        return state.filter(todo => todo.id !== props.id); // excluyo al TODO que tenga el misma id que el state. el metodo filter devuelve un nuevo array.
     }),
 );

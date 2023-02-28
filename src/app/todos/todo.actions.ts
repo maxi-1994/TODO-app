@@ -5,11 +5,6 @@ export const create = createAction(
     props<{text: string}>()
 );
 
-export const toggle = createAction(
-    '[TODO] Toggle',
-    props<{id: string}>()
-);
-
 export const editTodo = createAction(
     '[TODO] Edit',
     props<{id: string, text: string}>()
@@ -17,6 +12,15 @@ export const editTodo = createAction(
 
 export const deleteTodo = createAction(
     '[TODO] deleteTodo',
+    props<{id: string}>()
+);
+
+export const clearAllTodos = createAction(
+    '[TODO] clearAllTodos'
+);
+
+export const toggle = createAction(
+    '[TODO] Toggle',
     props<{id: string}>()
 );
 
