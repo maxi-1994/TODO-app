@@ -21,7 +21,7 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     ReactiveFormsModule,
     TodosModule,
-    StoreModule.forRoot(appReducers), // StoreModule.forRoot({ todo: todoReducer, filter: filterReducer }) - Se recomienda tener el app.module lo más limpio posible. Para que sea más facil de mantene por eso se importa el appReducers del app.state donde estan centralizados todos los reducers. 
+    StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

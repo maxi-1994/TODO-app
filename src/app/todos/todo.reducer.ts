@@ -8,8 +8,6 @@ export const todoState: Todo[] = [
     new Todo('Leer libro'),
 ];
 
-// - Con el operador spread estoy generando un nuevo array con los elementos que tiene el array todoState y luego le agrego una nueva instancia de Todo. No es recomendable usar array.push() para no mutar el objeto.
-// - Siempre se debe retornar un nuevo estado y prevenir la mutación del objeto state.
 export const todoReducer = createReducer(
     todoState,
     on(actions.create, (state, props) => [...state, new Todo(props.text)]),
@@ -28,7 +26,7 @@ export const todoReducer = createReducer(
     }),
 
     on(actions.deleteTodo, (state, props) => {
-        return state.filter(todo => todo.id !== props.id); // excluyo al TODO que tenga el misma id que el state. el metodo filter devuelve un nuevo array.
+        return state.filter(todo => todo.id !== props.id);
     }),
 
     on(actions.clearAllTodos, (state) => {
